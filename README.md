@@ -68,3 +68,90 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+//Make a Receipt component that renders the first receipt's
+// person
+// order
+// main
+// protein
+// rice
+// sauce
+// drink
+// cost
+import ReceiptInfo from "./ReceiptInfo.js"//child of child
+//import {useState} from "react"
+function Receipt(props){
+//console.log(props)
+const {receipts} = props.receipts
+console.log(props.receipts)//working
+
+// {receipts.map((receipt, index)=>{
+    // const person = props.receipts.person
+    // const main = props.receipts.order.main
+    // const protein =props.receipts.order.protein
+    // const rice = props.receipts.order.rice
+    // const sauce = props.receipts.order.sauce
+    // const drink = props.receipts.order.drink
+    // const cost  = props.receipts.order.cost
+
+//     return <ReceiptInfo key={index} person={person}  main={main} protein={protein} rice={rice} sauce={sauce} drink={drink} cost={cost}/>
+//     })}<div>
+
+return(
+    
+<div>
+{props.receipts.map((receipt,index)=>{
+        const person = receipt.person
+        const main = receipt.order.main
+        const protein =receipt.order.protein
+        const rice = receipt.order.rice
+        const sauce = receipt.order.sauce
+        const drink = receipt.order.drink
+        const cost  = receipt.order.cost
+    
+        return <ReceiptInfo key={index} person={person} main={main} protein={protein} rice={rice} sauce={sauce} drink={drink} cost={cost}/>
+    })}
+
+
+
+</div>
+)   
+}
+export default Receipt
+
+receipt info
+function ReceiptInfo(props){
+        return(
+           
+            <>
+               <div className="receipt">
+                <h2>{props.person}</h2>
+                
+                
+                
+                <div className="receipt-bottom">
+                <ul>
+                <li className="items"><span>Main:</span>{props.main}</li>
+                <li className="items"><span>Protein:</span> {props.protein}</li>
+                
+                <li className="items"><span>Rice:</span> {props.rice}</li>
+               
+                <li className="items"><span>Sauce:</span> {props.sauce}</li>
+                
+                <li className="items"><span>Drink:</span>{props.drink}</li> 
+                
+                <li className="items"><span>Cost:</span> ${props.cost}</li>
+                
+                </ul>
+                </div>
+                {/* <span onClick = {props.handlePaid} >Paid: {props.paid ? 'true' :  'false'}</span> */}
+                </div>
+    
+            </>
+    
+        )
+        
+    }
+    export default ReceiptInfo
